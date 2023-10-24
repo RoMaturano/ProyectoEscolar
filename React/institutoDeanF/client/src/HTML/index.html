@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./assets/icon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" href="./style/index.css">
+    <link rel="stylesheet" href="./style/Responsibe.css">
+    
+    <script src="./js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    
+    <script src="https://api.opencagedata.com/geocode/v1/json?q=URI-ENCODED-PLACENAME&key=b7494b92162e4b1788e7b6a322981d01"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css"/>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    <title>SISTEMA ESCOLAR - LOGIN</title>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="loader btn"></div>
+        <div class="toggle-slidemenu">
+            <button class="btn-open-slidemenu">
+                <div class="bar-btn-slidemenu">
+                </div>
+            </button>
+            <div class="container-slidemenu hiddenElement">
+                <div class="slidemenu">
+                    <div class="logo-slidemenu">
+                        <i class="fa-solid fa-school schoool-slidemenu"></i>
+                        <span class="logo-txt-slidemenu">INSTITUTO PRIVADO DEAN FUNES</span>
+                    </div>
+                    <div class="slide-sigin hiddenElement">
+                        <h1>Bienvenido, usuario!</h1>
+                        <p class="toggle-p">Introduce tus datos para acceder al sistema de gestión escolar.</p>
+                        <p class="toggle-p p-und">¿No tienes una cuenta?</p>
+                        <button class="hidden btn-register-toggle" id="btn-register-slidemenu">Registrarse</button>
+                    </div>
+                    <div class="slide-sigup hiddenElement">
+                        <h1>Hola, usuario!</h1>
+                        <p class="toggle-p">Registra tus datos personales para acceder al sistema de gestión escolar.</p>
+                        <p class="toggle-p p-und">¿Ya tienes una cuenta?</p>
+                        <button class="hidden btn-login-toggle" id="btn-login-slidemenu">Iniciar sesión</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel  logo">
+                    <i class="fa-solid fa-school"></i>
+                    <span class="logo-txt">INSTITUTO PRIVADO DEAN FUNES</span>
+                </div>
+                <div class="toggle-panel toggle-left">
+                    <h1>Hola, usuario!</h1>
+                    <p class="toggle-p">Registra tus datos personales para acceder al sistema de gestión
+                        escolar.</p>
+                    <p class="toggle-p p-und">¿Ya tienes una cuenta?</p>
+                    <button class="hidden btn-login-toggle" id="btn-login">Iniciar sesión</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Bienvenido, usuario!</h1>
+                    <p class="toggle-p">Introduce tus datos para acceder al sistema de gestión escolar.</p>
+                    <p class="toggle-p p-und">¿No tienes una cuenta?</p>
+                    <button class="hidden btn-register-toggle" id="btn-register">Registrarse</button>
+                </div>
+            </div>
+        </div>
+        <form action="" class="sign-in">
+            <h1 class="sign-in-title">Iniciar sesión</h1>
+            <div class="wrap-form-login">
+                <input type="text" class="text-user" id="txtuser" name="txtuser" placeholder="Email / matrícula"
+                    autofocus required />
+                <div class="password-input">
+                    <input type="password" class="text-password" id="txtpass" name="txtpass" autocomplete="off"
+                        placeholder="Contraseña" required />
+                    <span class="password-toggle" id="showPassBtn">
+                        <i class="fa fa-eye-slash" aria-hidden="true" style="color: #ae0e30;"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="wrap-forgot-password">
+                <a class="forgot-password-anchor" href="#">¿Olvidaste la contraseña?</a>
+            </div>
+            <button class="btn-login" id="btn-login">Iniciar sesión</button>
+        </form>
+       
+        <form action="" class="sign-up">
+            <div class="cointaner-stage">
+                <!-- <input type="text" placeholder="Nombre">
+                <input type="text" placeholder="Apellido">
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <button class="btn-register" id="btn-register">Registrarse</button> -->
+                <h1 class="big-heading">Crear una cuenta</h1>
+                <div class="progress-bar">
+                    <div class="stage current-item ">
+                        <p class="tool-tip" id="tool-tip-1">Información personal</p>
+                        <p class="stageno stageno-1">1</p>
+                    </div>
+                    <div class="stage">
+                        <p class="tool-tip" id="tool-tip-2">Información dirección</p>
+                        <p class="stageno stageno-2">2</p>
+                    </div>
+                    <div class="stage">
+                        <p class="tool-tip" id="tool-tip-3">Contacto de emergencia</p>
+                        <p class="stageno stageno-3">3</p>
+                    </div>
+                    <div class="stage">
+                        <p class="tool-tip" id="tool-tip-4">Información de cuenta</p>
+                        <p class="stageno stageno-4">4</p>
+                    </div>
+                    <div class="stage">
+                        <p class="tool-tip" id="tool-tip-5">Imagen de cuenta</p>
+                        <p class="stageno stageno-5">5</p>
+                    </div>
+                    <div class="stage">
+                        <p class="tool-tip" id="tool-tip-6">Finalizar registro</p>
+                        <p class="stageno stageno-6">6</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cointaner-stage-mobile">
+                <h1 class="big-heading">Crear una cuenta</h1>
+                <div class="progress-bar">
+                    <div class="stage stage-0">
+                        <p class="tool-tip" id="tool-tip-0"></p>
+                        <p class="stageno stageno-0"></p>
+                    </div>
+                    <div class="stage current-item-mobile">
+                        <p class="tool-tip" id="tool-tip-1-mobile">Información personal</p>
+                        <p class="stageno stageno-1 ">1</p>
+                    </div>
+                    <div class="stage">
+                        <p class="tool-tip" id="tool-tip-2-mobile">Información dirección</p>
+                        <p class="stageno stageno-2">2</p>
+                    </div>
+                    <div class="stage">
+                        <p class="tool-tip" id="tool-tip-3-mobile">Contacto de emergencia</p>
+                        <p class="stageno stageno-3">3</p>
+                    </div>
+                    <div class="stage">
+                        <p class="tool-tip" id="tool-tip-4-mobile">Información de cuenta</p>
+                        <p class="stageno stageno-4">4</p>
+                    </div>
+                    <div class="stage last-item-mobile">
+                        <p class="tool-tip" id="tool-tip-5-mobile">Imagen de cuenta</p>
+                        <p class="stageno stageno-5">5</p>
+                    </div>
+                    <div class="stage">
+                        <p class="tool-tip" id="tool-tip-6-mobile">Finalizar registro</p>
+                        <p class="stageno stageno-6">6</p>
+                    </div>
+                    <div class="info-register-mobile">
+                        <p><span class="required-info">Información obligatoria*</span>, <span class="optional-info">información opcional</span>.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="info-register hiddenElement">
+                <p><span class="required-info">Información obligatoria*</span>, <span class="optional-info">información opcional</span>.</p>
+            </div>
+            <div class="scrollable-container">
+            <div class="signup-form-content">
+                <div class="stage1-content ">
+                    <div class="input-container">
+                        <div class="input-field">
+                            <input type="text" name="fname" id="fname" class="styled-input" placeholder="Nombre*"/>
+                            <i class="fa fa-times name-checkout-failed hiddenElement" aria-hidden="true">
+                                <span class="tooltip-error tooltip-error-name"></span>
+                            </i>
+                            <i class="fa fa-check name-checkout-correct hiddenElement" aria-hidden="true"></i>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" name="lname" id="lname" placeholder="Apellido*"/>
+                            <i class="fa fa-times lastname-checkout-failed hiddenElement" aria-hidden="true">
+                                <span class="tooltip-error tooltip-error-lastname"></span>
+                            </i>
+                            <i class="fa fa-check lastname-checkout-correct hiddenElement" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <div class="input-field">
+                            <input class="input-dni" type="text" id="dni" name="dni" placeholder="DNI*" required/>
+                            <i class="fa fa-times dni-checkout-failed hiddenElement" aria-hidden="true">
+                                <span class="tooltip-error tooltip-error-dni"></span>
+                            </i>
+                            <i class="fa fa-check dni-checkout-correct hiddenElement" aria-hidden="true"></i>
+                        </div>
+                        <div class="input-field">
+                            <input class="input-phone" type="text" id="phone" name="phone" placeholder="Teléfono*" required/>
+                            <i class="fa fa-times phone-checkout-failed hiddenElement" aria-hidden="true">
+                                <span class="tooltip-error tooltip-error-phone"></span>
+                            </i>
+                            <i class="fa fa-check phone-checkout-correct hiddenElement" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <div class="wrap-datetime">
+                            <label for="datetime" class="lbl-datetime"><span class="txt-datetime">Fecha de nac*</span></label>
+                            <div class="input-field">
+                                <input class="input-datetime" type="date" id="datetime" name="datetime" required/>
+                                <i class="fa fa-times datetime-checkout-failed hiddenElement" aria-hidden="true">
+                                    <span class="tooltip-error tooltip-error-datetime"></span>
+                                </i>
+                                <i class="fa fa-check datetime-checkout-correct hiddenElement" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="wrap-gender-selection">
+                            <label for="gender field-heading" class="lbl-gender"><span class="txt-gender">Género*</span></label>
+                            <div class="input-field">
+                                <select class="select-gender" id="gender" name="gender" required>
+                                    <option value="" disabled selected><span>Seleccionar</span></option>
+                                    <option value="Hombre">Hombre</option>
+                                    <option value="Mujer">Mujer</option> 
+                                </select>
+                                <i class="fa fa-times gender-checkout-failed hiddenElement" aria-hidden="true">
+                                    <span class="tooltip-error tooltip-error-gender"></span>
+                                </i>
+                                <i class="fa fa-check gender-checkout-correct hiddenElement" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-container-additionalinfo container-additionalinfo">
+                        <textarea class="input-additionalinfo" id="additionalinfo" name="additionalinfo"
+                            placeholder="Información adicional (alergias, afecciones médicas, etc.)"
+                            required></textarea>
+                    </div>
+                    <div class="pagination-btns stage-btns-1">
+                        <input type="button" value="Volver" class="previousPage stagebtn1a btnDisabled"/>
+                        <input type="button" value="Siguiente" class="nextPage stagebtn1b btnDisabled"/>
+                    </div>
+                </div>
+                <div class="stage2-content hiddenElement">
+                    <div class="input-container">
+                        <div class="input-field">
+                            <input class="input-postalcode" type="text" id="postalcode" name="postalcode" placeholder="Código postal*" required/>
+                            <i class="fa fa-times postalcode-checkout-failed hiddenElement" aria-hidden="true">
+                                <span class="tooltip-error tooltip-error-postalcode"></span>
+                            </i>
+                            <i class="fa fa-check postalcode-checkout-correct hiddenElement" aria-hidden="true"></i>
+                        </div>
+                        
+                        <div class="wrap-localidad-selection">
+                            <label for="localidad field-heading" class="lbl-localidad"><span class="txt-localidad">Localidad*</span></label>
+                            <div class="input-field">
+                                <select class="select-localidad" id="localidad" name="localidad" required>
+                                    <option value="" disabled selected><span>Seleccionar</span></option>
+                                </select>
+                                <i class="fa fa-times localidad-checkout-failed hiddenElement" aria-hidden="true">
+                                    <span class="tooltip-error tooltip-error-localidad"></span>
+                                </i>
+                                <i class="fa fa-check localidad-checkout-correct hiddenElement" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <div class="input-field">
+                            <input class="input-street" type="text" id="street" name="street" placeholder="Calle*" required/>
+                            <i class="fa fa-times street-checkout-failed hiddenElement" aria-hidden="true">
+                                <span class="tooltip-error tooltip-error-street"></span>
+                            </i>
+                            <i class="fa fa-check street-checkout-correct hiddenElement" aria-hidden="true"></i>
+                        </div>
+                        <div class="input-field">
+                            <input class="input-streetnumber" type="text" id="streetnumber" name="streetnumber" placeholder="Altura*" required/>
+                            <i class="fa fa-times streetnumber-checkout-failed hiddenElement" aria-hidden="true">
+                                <span class="tooltip-error tooltip-error-streetnumber"></span>
+                            </i>
+                            <i class="fa fa-check streetnumber-checkout-correct hiddenElement" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                 
+                    <div id="map"></div>
+                   
+                    <div class="pagination-btns stage-btns-2">
+                        <input type="button" value="Volver" class="previousPage stagebtn2a"/>
+                        <input type="button" value="Siguiente" class="nextPage stagebtn2b btnDisabled"/>
+                    </div>
+                </div>
+                <div class="stage3-content hiddenElement">
+                    <div class="input-container">
+                        <div class="wrap-relationship-selection">
+                            <label for="relationship field-heading" class="lbl-relationship"><span class="txt-relationship">Relación</span></label>
+                            <select class="select-relationship" id="relationship" name="relationship" required>
+                                <option value="" disabled selected><span>Seleccionar</span></option>
+                                <option value="father">Padre</option>
+                                <option value="mother">Madre</option>
+                                <option value="brother-sister">Hermano/a</option>
+                                <option value="partner">Pareja</option>
+                                <option value="friend">Amigo/a</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" name="namece" id="namece" placeholder="Nombre"/>
+                        <input type="text" name="lastnamece" id="lastnamece" placeholder="Apellido"/>
+                    </div>
+                    <div class="input-container">
+                        <input type="emailce" name="emailce" id="emailce" placeholder="Email"/>
+                        <input class="input-phonece" type="text" id="phonece" name="phonece" placeholder="Teléfono"
+                            required/>
+                    </div>
+
+                    <div class="input-container">
+                        <input class="input-postalcodece" type="text" id="postalcodece" name="postalcodece"
+                            placeholder="Código postal" required>
+                        <input class="input-localidadce" type="text" id="localidadce" name="localidadce"
+                            placeholder="Localidad" required>
+                    </div>
+                    <div class="input-container">
+                        <input class="input-streetce" type="text" id="streetce" name="streetce" placeholder="Calle" required>
+                        <input class="input-streetnumberce" type="text" id="streetnumberce" name="streetnumberce"
+                            placeholder="Altura" required>
+                    </div>
+                    <div class="pagination-btns stage-btns-3">
+                        <input type="button" value="Volver" class="previousPage stagebtn3a">
+                        <input type="button" value="Siguiente" class="nextPage stagebtn3b">
+                    </div>
+                </div>
+                <div class="stage4-content hiddenElement">
+                    <div class="input-container">
+                        <div class="input-field">
+                            <input type="email" name="email" id="email" placeholder="Email*">
+                            <i class="fa fa-times email-checkout-failed hiddenElement" aria-hidden="true">
+                                <span class="tooltip-error tooltip-error-email"></span>
+                            </i>
+                            <i class="fa fa-check email-checkout-correct hiddenElement" aria-hidden="true"></i>
+                        </div>
+                        <div class="input-field">
+                            <input type="button" name="confirmemail" class="confirmemail btnDisabled" id="confirmemail" value="Verificar Email">
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <div class="input-field">
+                            <input type="text" name="matricula" id="matricula" placeholder="Matricula*">
+                            <i class="fa fa-times matricula-checkout-failed hiddenElement" aria-hidden="true">
+                                <span class="tooltip-error tooltip-error-matricula"></span>
+                            </i>
+                            <i class="fa fa-check matricula-checkout-correct hiddenElement" aria-hidden="true"></i>
+                        </div>
+                        
+                        <div class="wrap-typeuser-selection">
+                            <div class="input-field">
+                                <label for="typeuser field-heading" class="lbl-typeuser"><span class="txt-typeuser">Tipo de usuario*</span></label>
+                                <select class="select-typeuser" id="typeuser" name="typeuser" required>
+                                    <option value="" disabled selected><span>Seleccionar</span></option>
+                                    <option value="preceptor">Preceptor</option>
+                                    <option value="teacher">Docente</option>
+                                    <option value="studentparent">Padre</option>
+                                </select>
+                                <i class="fa fa-times typeuser-checkout-failed hiddenElement" aria-hidden="true">
+                                    <span class="tooltip-error tooltip-error-typeuser"></span>
+                                </i>
+                                <i class="fa fa-check typeuser-checkout-correct hiddenElement" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <div class="input-field">
+                            <input type="password" name="password" id="password" placeholder="Contraseña*" autocomplete="off" required>
+                            <span class="password-toggle" id="showPassBtnRegister">
+                                <i class="fa fa-eye-slash  icon-showpass-register" aria-hidden="true" style="color: #ae0e30;"></i>
+                            </span>
+                            <i class="fa fa-times password-checkout-failed hiddenElement" aria-hidden="true">
+                                <span class="tooltip-error tooltip-error-password"></span>
+                            </i>
+                            <i class="fa fa-check password-checkout-correct hiddenElement" aria-hidden="true"></i>
+                        </div>
+                        <div class="input-field">
+                            <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirmar contraseña*" autocomplete="off" required>
+                            <span class="password-toggle" id="showPassconfirmBtnRegister">
+                                <i class="fa fa-eye-slash  icon-showpassconfirm-register" aria-hidden="true" style="color: #ae0e30;"></i>
+                            </span>
+                            <i class="fa fa-times confirmpassword-checkout-failed hiddenElement" aria-hidden="true">
+                                <span class="tooltip-error tooltip-error-confirmpassword"></span>
+                            </i>
+                            <i class="fa fa-check confirmpassword-checkout-correct hiddenElement" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <!-- <div class="input-container">
+                        <div class="input-field-image">
+                            <section id="Images" class="images-cards">
+                                <div class="" id="add-photo-container">
+                                    <div class="add-new-photo first" id="add-photo">
+                                        <i class="fa fa-camera icon-camera" aria-hidden="true"></i>
+                                        <input type="file" multiple id="add-new-photo" name="images[]" style="display: none;">
+                                    </div>
+                                    <div id="image-container" style="background-color: transparent;">
+                                        <div class="wrap-image" style="display: none;">
+                                            <i class="fa fa-times delete-image" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div> -->
+                    <div class="pagination-btns stage-btns-4">
+                        <input type="button" value="Volver" class="previousPage stagebtn4a">
+                        <input type="button" value="Siguiente" class="nextPage stagebtn4b btnDisabled">
+                    </div>
+                </div>
+                <div class="stage5-content hiddenElement">
+                    <div class="input-container">
+                        <div class="input-field-image">
+                            <!-- <h2>Imagen para cuenta de usuario</h2> -->
+                            <div class="cointainer-update-image">
+                                <!-- <label>Imagen subida</label> -->
+                                <div id="display_image_div">
+                                    <img name="display_image_data" id="display_image_data" src="./assets/Login/dummy-image.png" alt="Picture">
+                                </div>
+                                <input type="hidden" name="cropped_image_data" id="cropped_image_data">
+                                <br>
+                                <input type="file" name="browse_image" id="browse_image" class="form-control" style="display: none;"> 
+                                <div class="btn-images">
+                                    <button id="browse_button" type="button" class="btn btn-acceptimage">Seleccionar Imagen</button>
+                                    <button type="button" class="btn btn-crop" id="crop_button" >Recortar</button>
+                                </div>
+                            </div>
+                            <div class="cointainer-settings-image">
+                                <!-- <label>Imagen de la cuenta</label> -->
+                                <div id="cropped_image_result">
+                                    <img src="./assets/Login/dummy-image.png" class="example-cropped-image"/>
+                                    
+                                </div>
+                                <p>Resultado</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pagination-btns stage-btns-5">
+                        <input type="button" value="Volver" class="previousPage stagebtn5a">
+                        <input type="button" value="Siguiente" class="nextPage stagebtn5b ">
+                    </div>
+                </div>
+                <div class="stage6-content hiddenElement">
+                    <div class="input-container">
+                        <label for="tc" class="tc">
+                            <input type="checkbox" name="tc" id="tc" required>
+                            Al enviar tus datos, aceptas los <a href="#" class="btn-open-terms"> términos y condiciones. </a>
+                        </label>
+                    </div>
+                    <div class="pagination-btns stage-btns-6">
+                        <input type="button" value="Volver" class="previousPage stagebtn6a">
+                        <button type="submit" value="" class="stagebtn6b btn-register btnDisabled">Registrarse</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="pagination-btns-mobile">
+                <div class="btns-mobile stage-btns-1 ">
+                    <input type="button" value="Volver" class="previousPage stagebtn1a btnDisabled">
+                    <input type="button" value="Siguiente" class="nextPage stagebtn1b btnDisabled">
+                </div>
+                <div class="btns-mobile stage-btns-2 hiddenElement">
+                    <input type="button" value="Volver" class="previousPage stagebtn2a ">
+                    <input type="button" value="Siguiente" class="nextPage stagebtn2b btnDisabled">
+                </div>
+                <div class="btns-mobile stage-btns-3 hiddenElement">
+                    <input type="button" value="Volver" class="previousPage stagebtn3a ">
+                    <input type="button" value="Siguiente" class="nextPage stagebtn3b ">
+                </div>
+                <div class="btns-mobile stage-btns-4 hiddenElement">
+                    <input type="button" value="Volver" class="previousPage stagebtn4a ">
+                    <input type="button" value="Siguiente" class="nextPage stagebtn4b btnDisabled">
+                </div>
+                <div class="btns-mobile stage-btns-5 hiddenElement">
+                    <input type="button" value="Volver" class="previousPage stagebtn5a ">
+                    <input type="button" value="Siguiente" class="nextPage stagebtn5b btnDisabled">
+                </div>
+                <div class="btns-mobile stage-btns-6 hiddenElement">
+                    <input type="button" value="Volver" class="previousPage stagebtn6a">
+                    <!-- <button type="submit" value="" class="stagebtn6b btn-register btnDisabled">Registrarse</button> -->
+                    <input type="button" value="Registrarse" class="btn-register stagebtn6b btnDisabled">
+                </div>
+            </div>
+        </div>
+    <div class="contentModal hiddenElement">
+        <div class="headerModal">
+            <h2>Verificar email</h2>
+            <i class="fa fa-times  modalPopupBtn" aria-hidden="true"></i>
+        </div>
+        <div class="elementsModal">
+            <div class="email-confirm">
+                <p class="txt-email-confirm">Hemos enviado un código de uso único a
+                    <span id="email-sender"></span> para confirmar su correo!
+                </p>
+                <input type="text" name="inputCode" id="inputCode" placeholder="Introducir el código">
+
+                <p class="txt-email-invalidcode">Si <span>cierra</span> esta ventana, el código se volverá inválido.</p>
+                <div class="line"></div>
+                <button class="resend-btn">Reenviar</button>
+                <button class="accept-btn">Aceptar</button>
+            </div>
+            <div class="email-checked hiddenElement">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                <p class="txt-email-checked">Su email ha sido verificado correctamente!</p>
+                <p class="txt-email-closewindow">Ya <span>puede cerrar</span> esta ventana.</p>
+                <div class="line"></div>
+            </div>
+        </div>
+    </div>
+    <div class="email-failed hiddenElement">
+
+    </div>
+    </div>
+    <div class="wrap-terms hiddenElement">
+        <div class="terms-header">
+            <h2 class="txt-head">
+                <span>Términos y Condiciones</span> de uso del Sistema de Gestión Escolar del <span>Instituto Privado Dean
+                Funes</span>
+            </h2>
+            <i class="fa fa-times btn-close-terms" aria-hidden="true"></i>
+        </div>
+        <div class="terms-text">
+            <p class="txt-body">
+                Bienvenido al Sistema de Gestión Escolar del Instituto Privado Dean Funes. Los
+                siguientes términos y condiciones rigen el uso de nuestro sistema. Al acceder y registrarse,
+                usted acepta cumplir con estos términos y condiciones. Si no está de acuerdo con alguno de estos
+                términos, le pedimos que no utilice nuestro sistema.
+            </p>
+            <h3 class="txt-title">
+                1. Propiedad Intelectual
+            </h3>
+            <p class="txt-body">
+                <span>1.1.</span> Todo el contenido de este sistema, incluyendo texto, gráficos, logotipos, imágenes,
+                videos, diseños y cualquier otro material, está protegido por derechos de autor y otros derechos de
+                propiedad intelectual. Estos derechos son propiedad del Instituto Privado Dean Funes y de sus
+                licenciantes.
+                <br>
+                <span>1.2.</span> Usted puede utilizar el contenido de este sistema para su uso personal y no comercial. No tiene
+                derecho a copiar, distribuir, transmitir, modificar, crear trabajos derivados o utilizar el contenido
+                con fines comerciales sin el permiso expreso por escrito del Instituto Privado Dean Funes.
+            </p>
+            <h3 class="txt-title">
+                2. Privacidad y Protección de Datos
+            </h3>
+            <p class="txt-body">
+                <span>2.1.</span> El Instituto Privado Dean Funes se compromete a proteger su privacidad y la
+                seguridad de sus datos personales. Consulte nuestra Política de Privacidad para obtener información
+                detallada sobre cómo recopilamos, utilizamos y protegemos sus datos personales.</p>
+            <h3 class="txt-title">3. Uso Apropiado del Sistema</h3>
+            <p class="txt-body">
+                <span>3.1.</span> Usted se compromete a utilizar este sistema de manera ética y responsable. No está
+                permitido realizar actividades que puedan dañar, interrumpir o comprometer la integridad del sistema o
+                su funcionalidad.
+                <br>
+                <span>3.2.</span> Usted acepta no utilizar este sistema para fines ilegales o prohibidos por la ley.
+            </p>
+            <h3 class="txt-title">
+                4. Enlaces a Terceros
+            </h3>
+            <p class="txt-body">
+                <span>4.1.</span> Este sistema puede contener enlaces a recursos de terceros. Estos enlaces son
+                proporcionados únicamente como referencia y no implican el respaldo o la responsabilidad del Instituto
+                Privado Dean Funes sobre el contenido de esos recursos.
+            </p>
+            <h3 class="txt-title">
+                5. Cambios en los Términos y Condiciones
+            </h3>
+            <p class="txt-body">
+                <span>5.1.</span> El Instituto Privado Dean Funes se reserva el derecho de actualizar y modificar
+                estos términos y condiciones en cualquier momento. Le recomendamos que revise periódicamente esta página
+                para estar al tanto de cualquier cambio.
+            </p>
+            <h3 class="txt-title">
+                6. Contacto
+            </h3>
+            <p class="txt-body">
+                <span>6.1.</span> Si tiene alguna pregunta o comentario sobre estos términos y condiciones, no dude
+                en ponerse en contacto con nosotros a través de la información de contacto proporcionada en el sistema.
+            </p>
+        </div>
+        <div class="terms-footer">
+            <button class="btn-accept-terms">aceptar</button>
+        </div>
+    </div>
+    <div class="popupAnimation hiddenElement">
+        <img></img>
+        <h2></h2>
+        <p></p>
+        <button type="button" value="" class="btn-accept">Aceptar</button>
+    </div>
+    </form>
+    </div>
+    <script>
+     
+    </script>
+</body>
+
+</html>
