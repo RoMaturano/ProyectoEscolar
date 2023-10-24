@@ -54,7 +54,7 @@ function App() {
 
   
   return (
-    <div className='app' >
+    <div  >
             {location.pathname === "/" ? <Login login={login} />  :   <NavBar/>}
             {/* {location.pathname === "/usuario" ? <LoginAdmin  loginAdmin={ loginAdmin} />  : <Admin/>} */}
       <Switch>
