@@ -9,7 +9,7 @@ const Home = () => {
             
                 <main className={style.contenido}>
                     <h1>Bienvenido al sistema educativo de autogestión para la Institucion educativa Dean Funes</h1>
-            {/*sdfsdfsdf*/ }
+
                 </main>
                 <FooterPag/>
             </div>
