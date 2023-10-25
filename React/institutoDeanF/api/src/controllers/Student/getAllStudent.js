@@ -22,7 +22,7 @@ const getAllStudent= async()=>{
             {
                model: SchoolGrades,
                through: "SchoolGradesStudent",
-               attributes:["grades","recovery","finalGrades","nameSubject"]
+               attributes:["grades","recovery","nameSubject"]
              },
             {
               model: EscolarCycle,

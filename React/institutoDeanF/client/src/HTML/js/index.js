@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     
     loginBtn.addEventListener('click', () => {
-        activeOrInactiveElement(container, "active");
+        activeOrInactiveElement(container, "inactive");
         hiddenElement(signup);
         showElement(signin);
     });
@@ -138,15 +138,16 @@ document.addEventListener("DOMContentLoaded", function () {
     lblLocalidadElements = document.getElementsByClassName('lbl-localidad');
 
     function applyShadowAndTransition(inputElement, lblElements, isFocus) {
-        const shadowValue = isFocus ? '-1.28pt 0 0.1pt 0.8pt #ae0e30' : 'none';
+        const shadowValueInput = isFocus ? '1.28pt 0 0.1pt 0.8pt #ae0e30' : 'none';
+        const shadowValueLbl = isFocus ? '-1.28pt 0 0.1pt 0.8pt #ae0e30' : 'none';
         const transitionValue = isFocus ? 'all 200ms ease-in' : 'none';
       
         for (let i = 0; i < lblElements.length; i++) {
-          lblElements[i].style.boxShadow = shadowValue;
+          lblElements[i].style.boxShadow = shadowValueLbl;
           lblElements[i].style.transition = transitionValue;
         }
       
-        inputElement.style.boxShadow = shadowValue;
+        inputElement.style.boxShadow = shadowValueInput;
         inputElement.style.transition = transitionValue;
     }
 
@@ -813,12 +814,14 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             (function() {
-                emailjs.init("ZMo33kR_cmvd-2_zv");
+                emailjs.init("yo-nQ1e36b80SQgtu");
             })();
             
-            var serviceID = "service_v1mglzi";
-            var templateID = "template_t0rgu5p";
-
+            // var serviceID = "service_v1mglzi"; serviceID ezequielperalta484
+            //var templateID = "template_t0rgu5p";var templateID = "template_t0rgu5p"; tempalte id eze
+            var serviceID = "service_2z4u35i"; 
+            var templateID = "template_grnqkgl";
+          
             var params = {
                 sendername: "SISTEMA ESCOLAR DEL INSTITUTO PRIVADO DEAN FUNES",
                 senderemail: document.querySelector("#email").value,
@@ -1404,31 +1407,31 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     stagebtn6b.addEventListener('click', () => {
         if (checkState6() === true) {
-            const nthChild = [
+            // const nthChild = [
                
-            ]
-            animateNextStage(
-                document.querySelector(".stageno-6"),
-                //document.querySelector(""),
-                nthChild,
-                document.getElementById(""),
-                ""
-            )
+            // ]
+            // animateNextStage(
+            //     document.querySelector(".stageno-6"),
+            //     document.querySelector(""),
+            //     nthChild,
+            //     document.getElementById(""),
+            //     ""
+            // )
 
-            // signupContent1.classList.add("hiddenElement");
-            // signupContent3.classList.add("hiddenElement");
-            // signupContent2.classList.add("hiddenElement");
-            // signupContent4.classList.add("hiddenElement");
-            // signupContent5.classList.add("hiddenElement");
-            // signupContent6.classList.add("hiddenElement");
+            signupContent1.classList.add("hiddenElement");
+            signupContent3.classList.add("hiddenElement");
+            signupContent2.classList.add("hiddenElement");
+            signupContent4.classList.add("hiddenElement");
+            signupContent5.classList.add("hiddenElement");
+            signupContent6.classList.add("hiddenElement");
 
-            // setTimeout(() => {
-            //     const stageElement6 = document.querySelector(".stageno-6");
-            //     stageElement6.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
-            //     stageElement6.style.backgroundColor = "#52ec61";
-            //     stageElement6.style.color = "#fff";
-            //     stageElement6.innerText = "✔";
-            // }, 100);
+            setTimeout(() => {
+                const stageElement6 = document.querySelector(".stageno-6");
+                stageElement6.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+                stageElement6.style.backgroundColor = "#52ec61";
+                stageElement6.style.color = "#fff";
+                stageElement6.innerText = "✔";
+            }, 100);
 
             const popUpAnimationContent = document.getElementsByClassName("popupAnimation");
 
@@ -1436,8 +1439,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 const firstPopUpAnimation = popUpAnimationContent[0]; 
 
                 const imgElement = firstPopUpAnimation.querySelector('img');
-                imgElement.src = '/assets/Login/sucessPopup.png';
-
+                imgElement.src = './assets/Login/sucessPopup.png';
+                // React\institutoDeanF\client\src\HTML\assets\Login\sucessPopup.png
                 const h2Element = firstPopUpAnimation.querySelector('h2');
                 h2Element.textContent = 'Registro Completado';
 
@@ -1498,8 +1501,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             option.value = item.Localidad; 
                             option.textContent = item.Localidad; 
                             elementInputLocalidad.appendChild(option);
-                            console.log(valueCP,"esto es valu cp");
-                            console.log(filteredData,"esto filteredData");
+                            console.log(valueCP);
+                            console.log(filteredData);
                         });
                     }
                 }
@@ -2052,7 +2055,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const firstPopUpAnimation = popUpAnimationContent[0]; // Tomamos el primer elemento
 
                 const imgElement = firstPopUpAnimation.querySelector('img');
-                imgElement.src = '/assets/Login/sucessPopup.png';
+                imgElement.src = './assets/Login/sucessPopup.png';
 
                 const h2Element = firstPopUpAnimation.querySelector('h2');
                 h2Element.textContent = 'Registro Completado';
@@ -2074,4 +2077,28 @@ document.addEventListener("DOMContentLoaded", function () {
             nextBtnStage6.classList.add("btnDisabled");
         }
     });
+
+    const btnLoginSigin = document.getElementById("btn-login-sigin");
+  
+    signin.addEventListener("submit", function(event) {
+        event.preventDefault();
+    });
+
+    btnLoginSigin.addEventListener('click', () => 
+    {
+        const userInputSigin = document.getElementById("txtuser").value;
+        const passInputSigin = document.getElementById("txtpass").value;
+        console.log("click en iniciar sesion");
+   
+        if(userInputSigin === "userexample@gmail.com" && passInputSigin === "password123") {
+            $(".loader").fadeIn("slow");
+            setTimeout(function() {
+                window.location.href = "http://localhost:3000/home";
+            }, 400); 
+        }
+    });
+
 });
+
+
+
