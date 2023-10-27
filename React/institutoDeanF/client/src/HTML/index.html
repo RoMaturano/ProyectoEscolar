@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./style/index.css">
     <link rel="stylesheet" href="./style/Responsibe.css">
     
+
     <script src="./js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     
@@ -104,7 +105,7 @@
 
 
        
-        <form action="" class="sign-up">
+        <form action="" class="sign-up" id="info-usuario" onsubmit="capturarDatos(event)" >
             <div class="cointaner-stage">
                 <!-- <input type="text" placeholder="Nombre">
                 <input type="text" placeholder="Apellido">
@@ -460,7 +461,7 @@
                     </div>
                     <div class="pagination-btns stage-btns-6">
                         <input type="button" value="Volver" class="previousPage stagebtn6a">
-                        <button type="submit" value="" class="stagebtn6b btn-register btnDisabled">Registrarse</button>
+                        <button type="submit" value="" class="stagebtn6b btn-register btnDisabled" id="botonsub">Registrarse</button>
                     </div>
                 </div>
             </div>
@@ -594,7 +595,7 @@
         </div>
     </div>
     <div class="popupAnimation hiddenElement">
-        <img></img>
+        <img/>
         <h2></h2>
         <p></p>
         <button type="button" value="" class="btn-accept"    >Aceptar</button>
@@ -603,6 +604,10 @@
     </div>
     <script>
      
+       
+          
+
+
     </script>
 </body>
 
