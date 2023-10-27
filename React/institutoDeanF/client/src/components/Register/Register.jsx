@@ -15,6 +15,7 @@ const Register = () => {
     email: "",
     phone: 0,
     image: "",
+    imageURL:""
   });
 
   const changeHandler = (event) => {
@@ -24,19 +25,22 @@ const Register = () => {
       [event.target.name]: event.target.value,
     });
   };
+ 
   const handleImageUpload = (event) => {
-    //console.log(event.target.files, "event.target.files")
     const imageFile = event.target.files[0];
-    console.log(event.target.files[0], "esto es event.target.files[0]");
-    setRegister({ ...register, image: imageFile });
-    const imageURL = URL.createObjectURL(imageFile); // Generar la URL de la imagen
-    setRegister((prevRegister) => ({ ...prevRegister, imageURL }));
+    const imageURL = URL.createObjectURL(imageFile);
+  
+    setRegister((prevRegister) => ({
+      ...prevRegister,
+      image: imageFile, // Almacena el archivo de imagen en el estado
+      imageURL: imageURL, // Almacena la URL de la imagen en el estado
+    }));
   };
-
+  
 
   const submitHandler = (event) => {
     event.preventDefault();
-   // console.log(register, "esto es el register enviado");
+    // console.log(register, "esto es el register enviado");
     axios
       .post("http://localhost:3001/student", register)
       .then((res) => alert(res));
@@ -44,7 +48,11 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={submitHandler} className={style.divbody} encType="multipart/form-data">
+    <form
+      onSubmit={submitHandler}
+      className={style.divbody}
+      encType="multipart/form-data"
+    >
       <div className={style.divcontainer}>
         <h1 className={style.title}>Registrar estudiante</h1>
         <div className={style.conteinerDivDivs}>
@@ -127,19 +135,19 @@ const Register = () => {
             </label>
             <input
               type="file"
-              value={register.image}
               name="image"
-              onChange={handleImageUpload}  
+              onChange={handleImageUpload}
               className={style.input}
             />
           </div>
         </div>
         <div className={style.buttomDiv}>
-
           <button type="submit" className={style.butom}>
             ACEPTAR
           </button>
-          <Link to="student"><button className={style.butom}>VOLVER</button></Link>
+          <Link to="student">
+            <button className={style.butom}>VOLVER</button>
+          </Link>
         </div>
       </div>
       <FooterPag />
