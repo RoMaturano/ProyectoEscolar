@@ -21,7 +21,47 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     dniStaff:{
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
+      allowNull: false,
+    },
+    phone:{
+      type: DataTypes.DOUBLE,
+      allowNull: false,
+    },
+    birthDate:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    gender:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    postalcode:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    localidad:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    street:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    streetnumber:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    typeuser:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    matricula:{
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     userStaff:{
@@ -34,7 +74,7 @@ module.exports = (sequelize) => {
     },
     banned:{
       type: DataTypes.STRING,
-      defaultValue: "active"
+      defaultValue: false
     }
     
 

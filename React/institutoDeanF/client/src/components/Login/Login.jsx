@@ -1,10 +1,34 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import axios from "axios";
 
 const Login=()=>{
    
+  const [detail,setDetail]=useState()
 
+  // useEffect(()=>{
+  //   axios.get("http://localhost:3001/staff")
+  //   .then ((data)=>{
+  //       console.log(data.data);
+  //       if(data.data){
+  //           setDetail(data.data)
+  //       }
+        
+  //   })
+  //   },[])
+
+  //   const filterEmailPassword=()=>{
+
+  //     const email= detail[0].email
+  //     const password = detail[0].passwordStaff
+
+
+  //   }
+
+ 
 return(
+<div>
+  
+
   <iframe  title="Login" src="http://127.0.0.1:5500/ProyectoEscolar/React/institutoDeanF/client/src/HTML/index.html" 
     style={{
       position: 'absolute',
@@ -14,7 +38,9 @@ return(
       height: '100%',
       border: 'none',
     }}
-  ></iframe>)
+    ></iframe>
+    </div>
+    )
 }
 
 export default Login

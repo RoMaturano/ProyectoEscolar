@@ -44,7 +44,7 @@ const Register = () => {
     axios
       .post("http://localhost:3001/student", register)
       .then((res) => alert(res));
-    history.push("/");
+    history.push("/home");
   };
 
   return (

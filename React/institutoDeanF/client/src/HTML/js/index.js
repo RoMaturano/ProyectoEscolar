@@ -2324,35 +2324,77 @@ document.addEventListener("DOMContentLoaded", function () {
     const userInputSigin = document.getElementById("txtuser").value;
     const passInputSigin = document.getElementById("txtpass").value;
     console.log("click en iniciar sesion");
+    //const emails = [];
+    //const passwords = [];
 
-    if (
-      userInputSigin === "userexample@gmail.com" &&
-      passInputSigin === "password123"
-    ) {
-      $(".loader").fadeIn("slow");
-      setTimeout(function () {
-        window.location.href = "http://localhost:3000/home";
-      }, 400);
-    }
+    fetch("http://localhost:3001/staff")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data,"esto es data");
+        for (let i = 0; i < data.length; i++) {
+          if(
+            userInputSigin === data[i].email&&
+            passInputSigin === data[i].passwordStaff
+          ) {
+            $(".loader").fadeIn("slow");
+            setTimeout(function () {
+              window.location.href = "http://localhost:3000/home";
+            }, 400);
+          }else{
+            ""
+          }
+         // emails.push(data[0].email);
+         // passwords.push(data[0].passwordStaff);
+        
+        }
+
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error al enviar los datos:", error);
+      });
+
+    //if (
+      //userInputSigin === "userexample@gmail.com" &&
+     // passInputSigin === "password123"
+    //)
+    //  {
+    //   $(".loader").fadeIn("slow");
+    //   setTimeout(function () {
+    //     window.location.href = "http://localhost:3000/home";
+    //   }, 400);
+    // }
   });
 
   botonsub.addEventListener("click", (e) => {
     e.preventDefault();
-    var datos = document.getElementById("info-usuario").innerHTML;
-    console.log("datos: " + datos);
-    var url = "http://localhost:3000/staff";
+    var datos = document.getElementById("info-usuario");
+    const url = "http://localhost:3001/staff";
 
+    var elementos = datos.elements;
+    var formData = {};
+    // Recorrer los elementos y agregar sus valores al objeto formData
+    for (var i = 0; i < elementos.length; i++) {
+      var elemento = elementos[i];
+      if (elemento.name) {
+        formData[elemento.name] = elemento.value;
+      }
+    }
+    var jsonData = JSON.stringify(formData);
+    //console.log(jsonData,"esto es json data")
     var options = {
       method: "POST",
       headers: {
-        "Content-Type": "application/json", // Ajusta el tipo de contenido según tu backend
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ datos: datos }), // Enviar los datos como JSON
+      body: jsonData, // Enviar los datos como JSON
     };
+    console.log("options " + options.body);
+
     fetch(url, options)
       .then((response) => response.json())
       .then((data) => {
-        console.log("Respuesta del servidor:", data);
+        console.log("usuario cargado:", data);
       })
       .catch((error) => {
         console.error("Error al enviar los datos:", error);
