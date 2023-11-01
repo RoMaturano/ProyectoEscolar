@@ -1617,7 +1617,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const pElement = firstPopUpAnimation.querySelector("p");
         pElement.textContent =
-          "Su cuenta ha sido registrada con éxito. Ahora su solicitud se encuentra en proceso de revisión para su habilitación. Le notificaremos una vez que su cuenta haya sido aprobada.";
+          "Su cuenta ha sido registrada con éxito. Ya puede ser utilizada para iniciar sesion";
 
         const btnElement = firstPopUpAnimation.querySelector(".btn-accept");
 
@@ -1739,7 +1739,7 @@ document.addEventListener("DOMContentLoaded", function () {
     map = L.map("map").setView([coordenadas.lat, coordenadas.lng], 16);
 
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: "Eze map's ©",
+      attribution: " map's ©",
     }).addTo(map);
 
     const customIcon = L.divIcon({

@@ -43,6 +43,12 @@ return(
                 <p className={style.labelNumbers}>{detail.id}</p>
             </div>
             <div>
+                {console.log(detail,"esto es detail")}
+                <label className={style.label}>Notas </label>
+                <p className={style.labelNumbers}>{detail.SchoolGrades? detail.SchoolGrades.map(element=> element.grades + "-") :'No hay Notas cargadas'}</p>
+            </div>
+
+            <div>
                 <img src={detail.image} alt= "img not found" className={style.img}></img>
             </div>
         </div>

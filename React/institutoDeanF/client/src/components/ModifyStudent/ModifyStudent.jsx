@@ -2,32 +2,48 @@ import style from "./Modify.module.css";
 import React, { useEffect,useState } from "react";
 import axios from "axios";
 import FooterPag from "../Footer/FooterPag";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min"
 
 const ModifyStudent = () => {
   const [user,setUser]=useState()
-  const [userAux,setUserAux]=useState({
-    nameUser:"",
-    passwordUser:""
-  })
-  
-
+  const {id}=useParams()
+const [detail, setDetail]=useState()
   const [formModify, setFormModify] = useState({
     id: "",
     name: "",
     lastName: "",
-    dni: 0,
+    dni: "",
     birthDate: "",
     email: "",
     phone: "",
     image: "",
   });
+
+  useEffect(()=>{
+    axios.get(`http://localhost:3001/student/student/${id}`)
+    .then ((data)=>{
+         console.log(data.data,"esto es data");
+        // console.log(data.data.id,"esto es data.data.id");
+        if(data.data.id){
+            setDetail(data.data)
+        }else{
+            window.alert("there is not student whit this id")
+        }
+    })
+    },[id])
    
   const submitHandler = (e) => {
     e.preventDefault();
-
+     
+  const formToSubmit = { ...formModify };
+  for (const key in formModify) {
+    if (formModify[key] === "" && detail[key] !== undefined) {
+      formToSubmit[key] = detail[key];
+    }
+  }
+  console.log(formToSubmit,"info enivada al back ", formToSubmit);
     axios
-      .put("http://localhost:3001/student", formModify)
+      .put("http://localhost:3001/student", formToSubmit)
       .then((res) => alert(res));
 
   };
@@ -42,43 +58,11 @@ const ModifyStudent = () => {
   };
 
   const changeHandler = (e) => {
-   
-    setFormModify({
-      ...formModify,
-      [e.target.name]: e.target.value,
-    });
+    setFormModify({ ...formModify,[e.target.name]: e.target.value })
   };
-  useEffect(async()=>{
-    const users = await axios.get("http://localhost:3001/staff") 
-    const data=users.data 
-    setUser(data)
-  },[])
-  const changeHandlerUser =(e)=>{
-    setUserAux({
-      
-      ...userAux,
-      [e.target.name]: e.target.value,
-    })
-    
-  }
-  const comprobationUser=()=>{
-   // console.log(user[0].nameStaff,"user[i].nameStaff")
-    //console.log(userAux.nameUser,"userAux.nameUser")
-    for (let i = 0; i < user.length; i++) {
-      if(user[i].nameStaff===userAux.nameUser && user[i].passwordStaff=== userAux.passwordUser&&user[i].banned==="active"){
-       // console.log(user[i].nameStaff, userAux.nameUser ,"esto es user = user name");
-       let forCrear=document.getElementById("divCrear")
-       if(forCrear.classList.contains(style.hidden)){
 
-         forCrear.classList.remove(style.hidden)
-       }
-       return alert("Usuario habilitado")
-      }
-    
-    }
-    return alert("Usuario Deshabiliatado")
-    
-  }
+
+ 
 
   return (
         <form encType="multipart/form-data" onSubmit={submitHandler} className={style.divbody}>
@@ -86,25 +70,12 @@ const ModifyStudent = () => {
           <div>
           <h1 className={style.title}>Modificar estudiante</h1>
           </div>
-          <div className={style.divValidar}>
-            <label className={style.label}>Ingresar usuario</label>
-            <input  type="text" name="nameUser" value={userAux.nameUser}  onChange={changeHandlerUser} className={style.input}/>
-            <label className={style.label}>Ingresar contraseña</label>
-            <input type="text" name="passwordUser" value={userAux.passwordUser}  onChange={changeHandlerUser} className={style.input} />
-            <button onClick={comprobationUser} className={style.buttomSend}>Chequear </button>
-          </div>
+         
+
+
+          
           <div className={style.conteinerDivDivs}>
-            <div className={style.divLabelInput}>
-              <label htmlFor="id"  className={style.label}>ID</label>
-              <input
-                type="text"
-                name="id"
-                value={formModify.id}
-                onChange={changeHandler}
-                className={style.input}
-                />
-              
-            </div>
+            
             <div className={style.divLabelInput}>
               <label htmlFor="name" className={style.label}>Nombre</label>
               <input
@@ -180,8 +151,8 @@ const ModifyStudent = () => {
           <div className={style.buttomDiv}>
 
            
-              <div  id="divCrear" className={style.hidden}>
-            <button type="submit" className={style.buttomSend}>ACEPTAR</button>
+              <div  id="divCrear" >
+            <button type="submit" className={style.buttomSend} >ACEPTAR</button>
               </div>
 
           <Link to="student"><button className={style.buttomSend}>VOLVER</button></Link>

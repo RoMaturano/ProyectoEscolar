@@ -1,7 +1,7 @@
 
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min"
+import { Link, useParams ,useHistory} from "react-router-dom/cjs/react-router-dom.min"
 import style from "./LoadGrades.module.css"
 import FooterPag from "../Footer/FooterPag";
 
@@ -15,7 +15,7 @@ const [loadGrades, setLoadGrades] = useState({
     nameSubject: "",
     idStudent:""
   });
-
+  const history = useHistory();
 
 useEffect(()=>{
     
@@ -45,6 +45,7 @@ const loadGradesStudent = (index, event) => {
     axios
       .post("http://localhost:3001/newGrades", loadGrades)
       .then(alert("Datos enviados"));
+      history.push("/home");
   }
   
 

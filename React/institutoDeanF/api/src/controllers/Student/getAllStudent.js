@@ -1,5 +1,5 @@
 const {Student,EscolarCycle,Attendance,SchoolGrades}= require ("../../db")
-const studentData = require("../../../Data.js")
+const studentData = require("../../../Data")
 
 
 
