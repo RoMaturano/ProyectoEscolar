@@ -54,7 +54,7 @@ module.exports = (sequelize) => {
     },
     typeuser:{
       type: DataTypes.STRING,
-      allowNull: false,
+     
     },
     email:{
       type: DataTypes.STRING,
@@ -62,7 +62,7 @@ module.exports = (sequelize) => {
     },
     matricula:{
       type: DataTypes.INTEGER,
-      allowNull: false,
+    allowNull: false,
     },
     userStaff:{
         type: DataTypes.STRING,

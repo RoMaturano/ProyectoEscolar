@@ -18,7 +18,7 @@ const NavBar=()=>{
                         <li className={style.menuOptions}><Link to="/student"><button className={style.buttom}>ESTUDIANTES</button></Link>
                             <ul className={style.submenu}>
                                 <li><Link to="/register" ><button type="button" className={style.buttomSubMenu}>Registrar</button></Link></li>
-                                <li><Link to="/modify" ><button type="button" className={style.buttomSubMenu}>Modificar</button></Link></li>
+                                {/* <li><Link to="/modify/:id" ><button type="button" className={style.buttomSubMenu}>Modificar</button></Link></li> */}
                                 <li><Link to="/grades"><button type="button" className={style.buttomSubMenu}>Notas</button></Link></li>
                                 <li><Link to="/students"><button type="button" className={style.buttomSubMenu}>Total</button></Link></li>
                             </ul>
