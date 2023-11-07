@@ -30,7 +30,8 @@ return(
   
 
   <iframe  title="Login" src="http://127.0.0.1:5500/ProyectoEscolar/React/institutoDeanF/client/src/HTML/index.html" 
-    style={{
+    style={{  
+      
       position: 'absolute',
       top: 0,
       left: 0,
