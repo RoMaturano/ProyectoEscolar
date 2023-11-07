@@ -5,7 +5,6 @@ import FooterPag from "../Footer/FooterPag";
 import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min"
 
 const ModifyStudent = () => {
-  const [user,setUser]=useState()
   const {id}=useParams()
 const [detail, setDetail]=useState()
   const [formModify, setFormModify] = useState({
@@ -22,26 +21,27 @@ const [detail, setDetail]=useState()
   useEffect(()=>{
     axios.get(`http://localhost:3001/student/student/${id}`)
     .then ((data)=>{
-         console.log(data.data,"esto es data");
+         //console.log(data.data,"esto es data");
         // console.log(data.data.id,"esto es data.data.id");
         if(data.data.id){
             setDetail(data.data)
-        }else{
-            window.alert("there is not student whit this id")
+            console.log(detail,"esto es detail");
         }
     })
     },[id])
    
   const submitHandler = (e) => {
     e.preventDefault();
-     
-  const formToSubmit = { ...formModify };
+    const formToSubmit = { ...formModify };
+   // console.log(formToSubmit,"hola ");  
   for (const key in formModify) {
-    if (formModify[key] === "" && detail[key] !== undefined) {
-      formToSubmit[key] = detail[key];
+    if (formModify[key] === "") {
+      formModify[key] = detail[key];
+    //  console.log( formModify[key]," formModify[key]");
+     // console.log(detail[key],"detail[key]");
     }
   }
-  console.log(formToSubmit,"info enivada al back ", formToSubmit);
+  console.log(formToSubmit,"info enivada al back ");
     axios
       .put("http://localhost:3001/student", formToSubmit)
       .then((res) => alert(res));

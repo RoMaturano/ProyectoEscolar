@@ -12,7 +12,7 @@ const Student =()=>{
                 </div>
                 <div className={style.div2}>
                     <Link to="/register"><button>Registrar</button></Link>
-                    <Link to="/modify"><button>Modificar</button></Link>
+                    {/* <Link to="/modify/:id"><button>Modificar</button></Link> */}
                     <Link to="/students"><button>Total</button></Link>
                     <Link to="/grades"><button>Notas</button></Link>
                 </div>
