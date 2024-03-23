@@ -29,7 +29,7 @@ return(
 <div>
   
 
-  <iframe  title="Login" src="http://127.0.0.1:5500/ProyectoEscolar/React/institutoDeanF/client/src/HTML/index.html" 
+  <iframe  title="Login" src="http://127.0.0.1:5500/React/institutoDeanF/client/src/HTML/index.html" 
     style={{  
       
       position: 'absolute',

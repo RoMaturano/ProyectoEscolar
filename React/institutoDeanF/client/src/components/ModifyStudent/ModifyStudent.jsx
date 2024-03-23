@@ -21,12 +21,10 @@ const [detail, setDetail]=useState()
   useEffect(()=>{
     axios.get(`http://localhost:3001/student/student/${id}`)
     .then ((data)=>{
-         //console.log(data.data,"esto es data");
+         console.log(data.data,"esto es data");
         // console.log(data.data.id,"esto es data.data.id");
-        if(data.data.id){
             setDetail(data.data)
             console.log(detail,"esto es detail");
-        }
     })
     },[id])
    
@@ -35,10 +33,11 @@ const [detail, setDetail]=useState()
     const formToSubmit = { ...formModify };
    // console.log(formToSubmit,"hola ");  
   for (const key in formModify) {
+    console.log( formModify[key]," formModify[key]");
     if (formModify[key] === "") {
       formModify[key] = detail[key];
-    //  console.log( formModify[key]," formModify[key]");
-     // console.log(detail[key],"detail[key]");
+      //console.log( formModify[key]," formModify[key]");
+      console.log(detail[key],"detail[key]");
     }
   }
   console.log(formToSubmit,"info enivada al back ");
@@ -85,6 +84,7 @@ const [detail, setDetail]=useState()
                 onChange={changeHandler}
                 className={style.input}
                 />
+                {console.log(detail,"esto es detail")}
             </div>
             <div className={style.divLabelInput}>
               <label htmlFor="lastName" className={style.label}>Apellido</label>
@@ -155,7 +155,7 @@ const [detail, setDetail]=useState()
             <button type="submit" className={style.buttomSend} >ACEPTAR</button>
               </div>
 
-          <Link to="student"><button className={style.buttomSend}>VOLVER</button></Link>
+          <Link to="/students"><button className={style.buttomSend}>VOLVER</button></Link>
           
           </div>
           <FooterPag/>
