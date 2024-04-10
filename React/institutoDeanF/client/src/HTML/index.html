@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./style/index.css">
     <link rel="stylesheet" href="./style/Responsibe.css">
     
+
     <script src="./js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     
@@ -28,7 +29,7 @@
     
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
-    <title>SISTEMA ESCOLAR - LOGIN</title>
+    <title>SISTEMA ESCOLAR - LOGIN</title> <!--holaa-->
 </head>
 
 <body>
@@ -81,10 +82,12 @@
                 </div>
             </div>
         </div>
+
+
         <form action="" class="sign-in">
             <h1 class="sign-in-title">Iniciar sesión</h1>
             <div class="wrap-form-login">
-                <input type="text" class="text-user" id="txtuser" name="txtuser" placeholder="Email / matrícula"
+                <input type="text" class="text-user" id="txtuser" name="txtuser" placeholder="E-mail "
                     autofocus required />
                 <div class="password-input">
                     <input type="password" class="text-password" id="txtpass" name="txtpass" autocomplete="off"
@@ -97,10 +100,12 @@
             <div class="wrap-forgot-password">
                 <a class="forgot-password-anchor" href="#">¿Olvidaste la contraseña?</a>
             </div>
-            <button class="btn-login" id="btn-login">Iniciar sesión</button>
+            <button class="btn-login" id="btn-login-sigin">Iniciar sesión</button>
         </form>
+
+
        
-        <form action="" class="sign-up">
+        <form action="" class="sign-up" id="info-usuario" onsubmit="capturarDatos(event)" >
             <div class="cointaner-stage">
                 <!-- <input type="text" placeholder="Nombre">
                 <input type="text" placeholder="Apellido">
@@ -225,8 +230,8 @@
                             <div class="input-field">
                                 <select class="select-gender" id="gender" name="gender" required>
                                     <option value="" disabled selected><span>Seleccionar</span></option>
-                                    <option value="Hombre">Hombre</option>
-                                    <option value="Mujer">Mujer</option> 
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option> 
                                 </select>
                                 <i class="fa fa-times gender-checkout-failed hiddenElement" aria-hidden="true">
                                     <span class="tooltip-error tooltip-error-gender"></span>
@@ -456,7 +461,7 @@
                     </div>
                     <div class="pagination-btns stage-btns-6">
                         <input type="button" value="Volver" class="previousPage stagebtn6a">
-                        <button type="submit" value="" class="stagebtn6b btn-register btnDisabled">Registrarse</button>
+                        <button type="submit" value="" class="stagebtn6b btn-register btnDisabled" id="botonsub">Registrarse</button>
                     </div>
                 </div>
             </div>
@@ -590,15 +595,19 @@
         </div>
     </div>
     <div class="popupAnimation hiddenElement">
-        <img></img>
+        <img/>
         <h2></h2>
         <p></p>
-        <button type="button" value="" class="btn-accept">Aceptar</button>
+        <button type="button" value="" class="btn-accept"    >Aceptar</button>
     </div>
     </form>
     </div>
     <script>
      
+       
+          
+
+
     </script>
 </body>
 

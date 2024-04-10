@@ -1,5 +1,5 @@
 const {Student,EscolarCycle,Attendance,SchoolGrades}= require ("../../db")
-const studentData = require("../../../Data.js")
+const studentData = require("../../../Data")
 
 
 
@@ -22,7 +22,7 @@ const getAllStudent= async()=>{
             {
                model: SchoolGrades,
                through: "SchoolGradesStudent",
-               attributes:["grades","recovery","finalGrades","nameSubject"]
+               attributes:["grades","recovery","nameSubject"]
              },
             {
               model: EscolarCycle,

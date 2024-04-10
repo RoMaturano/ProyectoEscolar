@@ -39,16 +39,22 @@ return(
                 <p className={style.labelNumbers}> {detail.email}</p>
                 <label className={style.label} >FECHA DE NACIMIENTO: </label>
                 <p className={style.labelNumbers}>{detail.birthDate}</p>
-                <label className={style.label}>ID: </label>
-                <p className={style.labelNumbers}>{detail.id}</p>
+                {/* <label className={style.label}>ID: </label>
+                <p className={style.labelNumbers}>{detail.id}</p> */}
             </div>
+            <div>
+                {console.log(detail,"esto es detail")}
+                <label className={style.label}>Notas </label>
+                <p className={style.labelNumbers}>{detail.SchoolGrades? detail.SchoolGrades.map(element=> element.grades + "-") :'No hay Notas cargadas'}</p>
+            </div>
+
             <div>
                 <img src={detail.image} alt= "img not found" className={style.img}></img>
             </div>
         </div>
         <div className={style.buttomDiv}>
             <Link to="/students"><button className={style.butom}>VOLVER</button></Link>
-            <Link to="/modify"><button className={style.butom}>MODIFICAR</button></Link>
+            <Link to={`/modify/${detail.id}`}><button className={style.butom}>MODIFICAR</button></Link>
             <Link to="/loadGrades"><button className={style.butom}>CARGAR NOTAS</button></Link>
         </div>
         <FooterPag/>
